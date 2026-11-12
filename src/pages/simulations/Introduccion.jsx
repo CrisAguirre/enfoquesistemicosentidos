@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { evidenciaApi } from '../../api/evidencia';
 import DrawingCanvas from '../../components/shared/DrawingCanvas';
 import SensoryPuzzle from '../../components/shared/SensoryPuzzle';
-import { Aurora, BlurText, FadeContent } from '../../reactbits';
+import { Aurora, BlurText } from '../../reactbits';
 import './introduccion.css';
 import './introduccion_animations.css';
 
-const TAB_ORDER = ['sentidos', 'puzzle', 'pensamiento', 'sintesis'];
+const TAB_ORDER = ['ejemplos', 'sentidos', 'pensamiento', 'sintesis'];
 const TAB_LABELS = {
-  sentidos: 'Los 5 Sentidos 👁️',
-  puzzle: 'Reto Sistémico 🧠',
+  ejemplos: '¿Qué es un Sistema? 🪐',
+  sentidos: 'Los 5 Sentidos y Reto 👁️',
   pensamiento: 'Pensamiento Sistémico 🎬',
   sintesis: 'Síntesis Final 📝',
 };
@@ -73,7 +73,7 @@ const SENSES_INFO = [
 ];
 
 export default function Introduccion() {
-  const [activeTab, setActiveTab] = useState('sentidos');
+  const [activeTab, setActiveTab] = useState('ejemplos');
   const [activeSenseCard, setActiveSenseCard] = useState('vista');
   const [conclusion, setConclusion] = useState('');
   const [curiosidad, setCuriosidad] = useState('');
@@ -103,7 +103,7 @@ export default function Introduccion() {
           setCuriosidad(prevCur.contenido);
           setIsCuriosidadSaved(true);
         }
-        const prevApr = find('Apreciación Sistémica: Introducción');
+        const prevApr = find('Apreciación: Interconexiones Sensoriales');
         if (prevApr) {
           setApreciacion(prevApr.contenido);
           setIsApreciacionSaved(true);
@@ -147,233 +147,643 @@ export default function Introduccion() {
   };
 
   return (
-    <div className="introduccion-page-custom">
-      <div className="aurora-container-intro">
-        <Aurora colorStops={['#a855f7', '#3b82f6', '#ec4899']} blend={0.5} amplitude={1.0} speed={0.4} />
+    <div className="intro-lab-container animate-fade">
+      <div className="intro-header">
+        <h1>Laboratorio 1: Los Sentidos y el Pensamiento Sistémico</h1>
+        <p className="subtitle">
+          El cerebro como eje central y los cinco sentidos como subsistemas interconectados de captación de información.
+        </p>
       </div>
 
-      <div className="intro-container">
-        <header className="intro-header-clean">
-          <BlurText text="Laboratorio 1: Los Sentidos y el Pensamiento Sistémico" delay={150} animateBy="words" direction="top" className="intro-title-blur" />
-          <p className="intro-subtitle-clean">
-            El cerebro como eje central y los cinco sentidos como subsistemas interconectados de captación de información.
-          </p>
-        </header>
+      {/* Navegación por pestañas */}
+      <div className="tab-navigation">
+        {TAB_ORDER.map((tabKey) => (
+          <button
+            key={tabKey}
+            className={activeTab === tabKey ? 'active' : ''}
+            onClick={() => goTab(tabKey)}
+          >
+            {TAB_LABELS[tabKey]}
+          </button>
+        ))}
+      </div>
 
-        {/* Tab Navigation */}
-        <nav className="tab-navigation">
-          {TAB_ORDER.map((tabKey) => (
-            <button
-              key={tabKey}
-              onClick={() => goTab(tabKey)}
-              className={`tab-btn-clean ${activeTab === tabKey ? 'active' : ''}`}
+      {/* Contenido de pestañas */}
+      <div className="tab-content glass-panel">
+        {/* PESTAÑA 1: ¿QUÉ ES UN SISTEMA? Y ANALOGÍAS */}
+        {activeTab === 'ejemplos' && (
+          <div className="video-section animate-fade">
+            {/* Concepto inicial interactivo */}
+            <div
+              className="concepto-sistema-section mb-5 glass-panel"
+              style={{
+                position: 'relative',
+                overflow: 'hidden',
+                padding: '2.5rem',
+                borderRadius: '16px',
+                marginBottom: '2rem',
+              }}
             >
-              {TAB_LABELS[tabKey]}
-            </button>
-          ))}
-        </nav>
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  zIndex: 0,
+                  opacity: 0.35,
+                  pointerEvents: 'none',
+                }}
+              >
+                <Aurora colorStops={['#7c3aed', '#a855f7', '#3b82f6']} blend={0.6} amplitude={1.2} speed={0.8} />
+              </div>
 
-        {/* TAB 1: LOS 5 SENTIDOS */}
+              <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+                <BlurText
+                  text="¿Qué es un Sistema?"
+                  className="text-neon-purple mb-4"
+                  style={{ fontSize: '2.2rem', fontWeight: 'bold', color: '#c084fc', marginBottom: '1rem' }}
+                  delay={50}
+                />
+
+                <div className="concepto-interactivo mx-auto" style={{ maxWidth: '800px', margin: '0 auto' }}>
+                  <p style={{ fontSize: '1.2rem', lineHeight: '1.7', marginBottom: '1.5rem', color: '#e2e8f0' }}>
+                    Imagina un ojo, una lengua o un oído aislados en una mesa. Por sí solos, <strong>no pueden ver, saborear ni escuchar</strong>.
+                    La visión y la audición no ocurren en el órgano receptor: ocurren cuando las señales viajan a la corteza cerebral y son interpretadas.
+                  </p>
+                  <p style={{ fontSize: '1.1rem', color: '#cbd5e1', marginBottom: '2rem' }}>
+                    Un <strong>sistema</strong> es un conjunto de elementos que interactúan entre sí para lograr un <strong>propósito común</strong>.
+                    En nuestro cuerpo, el cerebro y los 5 sentidos forman un macrosistema de alerta y supervivencia.
+                  </p>
+
+                  <div className="anim-interconnection" style={{ margin: '0 auto', transform: 'scale(1.15)', transformOrigin: 'center' }}>
+                    <div className="node node-1" style={{ background: '#a855f7' }}>Cerebro</div>
+                    <div className="node node-2" style={{ background: '#3b82f6' }}>Vista 👁️</div>
+                    <div className="node node-3" style={{ background: '#22c55e' }}>Oído 👂</div>
+                    <div className="connection line-1"></div>
+                    <div className="connection line-2"></div>
+                    <div className="connection line-3"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr className="separator mb-5" />
+
+            <h3>🪐 Tres Analogías Sistémicas del Mundo Real</h3>
+            <p className="section-desc">
+              Analiza estos tres modelos interactivos para descubrir cómo la interconexión define la supervivencia de cualquier sistema:
+            </p>
+
+            <div className="sim-stack-intro">
+              {/* 1. Sistema Solar */}
+              <div className="sim-item full-width">
+                <h4>1. El Sistema Solar (Equilibrio Gravitacional)</h4>
+                <div className="sim-visual solar-visual">
+                  <div className="stars"></div>
+                  <div className="shooting-star"></div>
+                  <div className="solar-system-full">
+                    <div className="sun-glow"></div>
+                    <div className="orbit orbit-mercury"><div className="planet planet-mercury"></div></div>
+                    <div className="orbit orbit-venus"><div className="planet planet-venus"></div></div>
+                    <div className="orbit orbit-earth">
+                      <div className="planet planet-earth">
+                        <div className="orbit-moon"><div className="moon"></div></div>
+                      </div>
+                    </div>
+                    <div className="orbit orbit-mars"><div className="planet planet-mars"></div></div>
+                    <div className="orbit orbit-jupiter"><div className="planet planet-jupiter"></div></div>
+                    <div className="orbit orbit-saturn">
+                      <div className="planet planet-saturn">
+                        <div className="saturn-rings"></div>
+                      </div>
+                    </div>
+                    <div className="orbit orbit-uranus"><div className="planet planet-uranus"></div></div>
+                    <div className="orbit orbit-neptune"><div className="planet planet-neptune"></div></div>
+                  </div>
+                </div>
+                <p className="sim-caption">
+                  El Sol ejerce la fuerza central que organiza las órbitas, igual que el <strong>cerebro</strong> organiza
+                  y sincroniza los flujos de información sensorial. Si un planeta cambiara súbitamente de masa, todo el sistema orbital se alteraría.
+                </p>
+              </div>
+
+              {/* 2. Sistema Eléctrico */}
+              <div className="sim-item full-width">
+                <h4>2. Red de Cableado y Flujo de Señales</h4>
+                <div className="sim-visual electric-visual">
+                  <picture>
+                    <source media="(min-width: 769px)" srcSet="/assets/images/isometric_house.png" />
+                    <img src="/assets/images/isometric_house_mobile.png" className="isometric-bg" alt="Red Eléctrica" />
+                  </picture>
+                  <div className="isometric-overlay house-circuit-overlay">
+                    <svg className="circuit-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                      <path className="wire-main" d="M 85 88 L 85 70 L 50 70 L 50 48 L 22 48 L 22 30" />
+                      <path className="wire-branch" d="M 50 70 L 25 70" />
+                      <path className="wire-branch" d="M 50 70 L 72 70" />
+                      <path className="wire-branch" d="M 22 30 L 40 30" />
+                      <path className="wire-branch" d="M 22 48 L 68 48 L 68 30" />
+                      <circle className="energy-dot ed-1" r="1.2">
+                        <animateMotion dur="3s" repeatCount="indefinite" path="M 85 88 L 85 70 L 50 70 L 50 48 L 22 48 L 22 30" />
+                      </circle>
+                      <circle className="energy-dot ed-2" r="1">
+                        <animateMotion dur="2.5s" repeatCount="indefinite" begin="0.5s" path="M 50 70 L 25 70" />
+                      </circle>
+                      <circle className="energy-dot ed-3" r="1">
+                        <animateMotion dur="2.5s" repeatCount="indefinite" begin="1s" path="M 50 70 L 72 70" />
+                      </circle>
+                      <circle className="energy-dot ed-4" r="1">
+                        <animateMotion dur="2s" repeatCount="indefinite" begin="1.5s" path="M 22 30 L 40 30" />
+                      </circle>
+                    </svg>
+                    <div className="circuit-source">🧠</div>
+                  </div>
+                </div>
+                <p className="sim-caption">
+                  En los sentidos, los cables son los <strong>nervios aferentes</strong> (óptico, auditivo, trigémino, etc.)
+                  que transportan impulsos bioeléctricos (potenciales de acción) desde los receptores periféricos hasta el núcleo central.
+                </p>
+              </div>
+
+              {/* 3. Sistema de Transporte Urbano */}
+              <div className="sim-item full-width">
+                <h4>3. Flujos Urbanos y Cuellos de Botella</h4>
+                <div className="sim-visual city-visual">
+                  <picture>
+                    <source media="(min-width: 769px)" srcSet="/assets/images/isometric_city.png" />
+                    <img src="/assets/images/isometric_city_mobile.png" className="isometric-bg" alt="Transporte Urbano" />
+                  </picture>
+                  <div className="city-map isometric-overlay">
+                    <div className="car-iso car-iso-1"></div>
+                    <div className="car-iso car-iso-2"></div>
+                    <div className="car-iso car-iso-3"></div>
+                    <div className="car-iso car-iso-4"></div>
+                  </div>
+                </div>
+                <p className="sim-caption">
+                  Cuando hay sobrecarga sensorial (ruido ensordecedor, luces cegadoras o dolor intenso), se genera un
+                  <strong> cuello de botella cognitivo</strong>: el cerebro debe priorizar estímulos vitales y filtrar información secundaria.
+                </p>
+              </div>
+            </div>
+
+            <ContinueButton label="Los 5 Sentidos y Reto Sistémico" onClick={continueNext} />
+          </div>
+        )}
+
+        {/* PESTAÑA 2: LOS 5 SENTIDOS Y PUZZLE SISTÉMICO */}
         {activeTab === 'sentidos' && (
-          <FadeContent blur duration={500} easing="ease-out" initialOpacity={0}>
-            <div className="intro-panel-glass">
-              <h2 className="panel-title-clean">1. Los Cinco Centinelas del Cuerpo Humano</h2>
-              <p className="panel-desc-clean">
-                En biología tradicional solemos estudiar cada órgano por separado. Desde el <strong>enfoque sistémico</strong>, ningún sentido opera aislado:
-                cada uno es un <em>transductor biológico</em> que convierte diferentes tipos de energía física o química en el mismo lenguaje universal que entiende el cerebro:
-                <strong> potenciales de acción eléctricos</strong>.
-              </p>
+          <div className="sentidos-section animate-fade">
+            <h3>👁️ Los Cinco Centinelas del Organismo</h3>
+            <p className="section-desc">
+              Cada sentido es un <strong>transductor biológico</strong>: convierte una forma particular de energía del entorno
+              (luz, presión, calor o moléculas químicas) en impulsos eléctricos comprensibles para el encéfalo.
+              Selecciona cada sentido para explorar su ficha sistémica:
+            </p>
 
-              {/* Botones selectores de sentidos */}
-              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', margin: '1.5rem 0' }}>
-                {SENSES_INFO.map((s) => (
-                  <button
-                    key={s.id}
-                    className="sim-btn"
-                    onClick={() => setActiveSenseCard(s.id)}
-                    style={{
-                      borderColor: activeSenseCard === s.id ? s.color : 'rgba(255,255,255,0.1)',
-                      background: activeSenseCard === s.id ? `${s.color}22` : 'rgba(30,41,59,0.7)',
-                      color: activeSenseCard === s.id ? s.color : 'var(--text-secondary)',
-                      padding: '0.8rem 1.2rem',
-                    }}
-                  >
-                    <span style={{ fontSize: '1.4rem' }}>{s.icon}</span>
-                    <span style={{ fontWeight: 600 }}>{s.name}</span>
-                  </button>
-                ))}
-              </div>
+            {/* Selector de sentidos */}
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', margin: '1.5rem 0' }}>
+              {SENSES_INFO.map((s) => (
+                <button
+                  key={s.id}
+                  className={`sim-btn ${activeSenseCard === s.id ? 'active' : ''}`}
+                  onClick={() => setActiveSenseCard(s.id)}
+                  style={{
+                    borderColor: activeSenseCard === s.id ? s.color : 'rgba(255,255,255,0.1)',
+                    background: activeSenseCard === s.id ? `${s.color}22` : 'rgba(30,41,59,0.7)',
+                    color: activeSenseCard === s.id ? s.color : 'var(--text-secondary)',
+                    padding: '0.8rem 1.2rem',
+                  }}
+                >
+                  <span style={{ fontSize: '1.3rem', marginRight: '0.4rem' }}>{s.icon}</span>
+                  <span style={{ fontWeight: 600 }}>{s.name}</span>
+                </button>
+              ))}
+            </div>
 
-              {/* Ficha técnica del sentido seleccionado */}
-              {(() => {
-                const s = SENSES_INFO.find((x) => x.id === activeSenseCard);
-                return (
-                  <div
-                    className="glass-card"
-                    style={{
-                      borderLeft: `6px solid ${s.color}`,
-                      padding: '1.5rem',
-                      marginTop: '1rem',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '0.75rem',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                      <span style={{ fontSize: '2rem' }}>{s.icon}</span>
-                      <h3 style={{ margin: 0, color: s.color, fontSize: '1.5rem' }}>{s.name}</h3>
-                    </div>
-                    <div><strong>Órgano receptor:</strong> {s.organ}</div>
-                    <div><strong>Estímulo físico/químico:</strong> {s.stimulus}</div>
-                    <div><strong>Receptores biológicos:</strong> {s.receptor}</div>
-                    <div><strong>Centro de procesamiento cerebral:</strong> {s.cortex}</div>
-                    <div style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', fontStyle: 'italic' }}>
-                      "{s.role}"
-                    </div>
+            {/* Ficha técnica del sentido seleccionado */}
+            {(() => {
+              const s = SENSES_INFO.find((x) => x.id === activeSenseCard) || SENSES_INFO[0];
+              return (
+                <div
+                  className="glass-card"
+                  style={{
+                    borderLeft: `6px solid ${s.color}`,
+                    padding: '1.5rem',
+                    marginBottom: '2rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.75rem',
+                    background: 'rgba(255,255,255,0.03)',
+                    borderRadius: '12px',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <span style={{ fontSize: '2rem' }}>{s.icon}</span>
+                    <h3 style={{ margin: 0, color: s.color, fontSize: '1.5rem' }}>{s.name}</h3>
                   </div>
-                );
-              })()}
+                  <div><strong>Órgano receptor:</strong> {s.organ}</div>
+                  <div><strong>Estímulo físico/químico:</strong> {s.stimulus}</div>
+                  <div><strong>Receptores biológicos:</strong> {s.receptor}</div>
+                  <div><strong>Centro de procesamiento cerebral:</strong> {s.cortex}</div>
+                  <div style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', fontStyle: 'italic' }}>
+                    "{s.role}"
+                  </div>
+                </div>
+              );
+            })()}
 
-              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2.5rem' }}>
-                <button className="sim-btn active" style={{ padding: '0.9rem 2.2rem', fontSize: '1.1rem' }} onClick={continueNext}>
-                  Continuar al Reto Sistémico →
-                </button>
-              </div>
-            </div>
-          </FadeContent>
+            <hr className="separator mb-5" />
+
+            {/* Reto interactivo SensoryPuzzle */}
+            <SensoryPuzzle />
+
+            <ContinueButton label="Pensamiento Sistémico" onClick={continueNext} />
+          </div>
         )}
 
-        {/* TAB 2: PUZZLE SISTÉMICO */}
-        {activeTab === 'puzzle' && (
-          <FadeContent blur duration={500} easing="ease-out" initialOpacity={0}>
-            <div className="intro-panel-glass">
-              <h2 className="panel-title-clean">2. El Circuito de Comunicación Sensorial</h2>
-              <p className="panel-desc-clean">
-                En un <strong>sistema biológico</strong>, una parte sin conexión pierde su propósito.
-                Si un receptor capta luz pero el nervio o la corteza visual se dañan, no existe la visión consciente.
-                Resuelve el siguiente acoplamiento para verificar que comprendes las vías aferentes:
-              </p>
-
-              <SensoryPuzzle />
-
-              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2.5rem' }}>
-                <button className="sim-btn active" style={{ padding: '0.9rem 2.2rem', fontSize: '1.1rem' }} onClick={continueNext}>
-                  Continuar a Pensamiento Sistémico →
-                </button>
-              </div>
-            </div>
-          </FadeContent>
-        )}
-
-        {/* TAB 3: PENSAMIENTO SISTÉMICO */}
+        {/* PESTAÑA 3: PENSAMIENTO SISTÉMICO (VIDEO + FIGURAS + 7 LINEAMIENTOS) */}
         {activeTab === 'pensamiento' && (
-          <FadeContent blur duration={500} easing="ease-out" initialOpacity={0}>
-            <div className="intro-panel-glass">
-              <h2 className="panel-title-clean">3. Los Siete Lineamientos del Pensamiento Sistémico</h2>
-              <p className="panel-desc-clean">
-                Propuestos por el Dr. Eliécer Pineda Ballesteros (UDES), estos siete lentes conceptuales te permitirán
-                analizar cada sentido no como una ficha de memoria, sino como una red viva y dinámica:
-              </p>
+          <div className="pensamiento-section animate-fade">
+            <h3 className="mb-3">🎬 Video: Pensamiento Sistémico</h3>
+            <p className="section-desc">
+              ¿Qué significa mirar el cuerpo humano como un <strong>sistema</strong>? Este video te introduce a la forma de pensar
+              que conecta órganos, nervios y estímulos en un mapa continuo de relaciones:
+            </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', margin: '1.5rem 0' }}>
-                {[
-                  { num: 1, title: 'Componentes', icon: '🧩', desc: 'Identificar las partes anatómicas y células especializadas de cada órgano y del cerebro.' },
-                  { num: 2, title: 'Causalidad', icon: '⚡', desc: 'Rastrear la cadena: estímulo → transducción → potencial de acción → interpretación.' },
-                  { num: 3, title: 'Representación', icon: '📊', desc: 'Construir modelos gráficos, homúnculos, espectros y mapas corticales.' },
-                  { num: 4, title: 'Escalas', icon: '📏', desc: 'Analizar umbrales numéricos: decibeles (dB), nanómetros (nm), hercios (Hz), densidad receptora.' },
-                  { num: 5, title: 'Conservación', icon: '🔄', desc: 'Comprender cómo la información sensorial se conserva y transforma sin perder su código.' },
-                  { num: 6, title: 'Propósito', icon: '🎯', desc: 'La meta global: supervivencia, adaptación, anticipación del peligro y toma de decisiones.' },
-                  { num: 7, title: 'Estabilidad (Homeostasis)', icon: '⚖️', desc: 'Adaptación sensorial, habituación, compensación neuroplástica y balance interno.' },
-                ].map((l) => (
-                  <div key={l.num} className="glass-card" style={{ padding: '1.25rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                      <span style={{ fontSize: '1.3rem' }}>{l.icon}</span>
-                      <h4 style={{ margin: 0, color: 'var(--color-primary-400)' }}>L{l.num}: {l.title}</h4>
-                    </div>
-                    <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-secondary)' }}>{l.desc}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2.5rem' }}>
-                <button className="sim-btn active" style={{ padding: '0.9rem 2.2rem', fontSize: '1.1rem' }} onClick={continueNext}>
-                  Ir a Síntesis Final y Dibujo 📝 →
-                </button>
-              </div>
+            <div className="video-panel">
+              <video controls preload="metadata" poster="/assets/images/mariposa-portada.jpg">
+                <source src="/assets/videos/pensamiento-sistemico.mp4" type="video/mp4" />
+                Tu navegador no soporta la reproducción de video.
+              </video>
             </div>
-          </FadeContent>
+
+            <div className="figuras-grid">
+              <figure className="figura-card glass-panel">
+                <img src="/assets/images/figura-conglomerado.jpg" alt="Piezas desordenadas" />
+                <figcaption>
+                  Figura A — <strong>Conglomerado:</strong> piezas sensoriales aisladas sin comunicación no producen percepción consciente.
+                </figcaption>
+              </figure>
+              <figure className="figura-card glass-panel">
+                <img src="/assets/images/figura-sistema.jpg" alt="Sistema acoplado" />
+                <figcaption>
+                  Figura B — <strong>Sistema:</strong> las vías aferentes sincronizadas con el cerebro revelan el mundo exterior.
+                </figcaption>
+              </figure>
+            </div>
+
+            <hr className="separator" />
+
+            <h3 className="mb-3">🎯 Los 7 Lineamientos del Pensamiento Sistémico</h3>
+            <p className="section-desc">
+              Formulados por el Dr. Eliécer Pineda Ballesteros (UDES), estos siete lineamientos guiarán tus investigaciones
+              a lo largo de todos los laboratorios de los sentidos:
+            </p>
+
+            <LineamientosRoadmap />
+
+            <hr className="separator" />
+
+            <h3 className="mb-3">💭 Tu Curiosidad Inicial</h3>
+            <p className="section-desc">
+              ¿Cuál de los 7 lineamientos o qué misterio sobre cómo tus sentidos engañan o alertan a tu cerebro te genera más curiosidad?
+            </p>
+
+            <div className="input-group">
+              <textarea
+                value={curiosidad}
+                onChange={(e) => setCuriosidad(e.target.value)}
+                disabled={isCuriosidadSaved}
+                placeholder="Escribe aquí tu curiosidad inicial..."
+                className="glass-textarea"
+                rows="4"
+              ></textarea>
+            </div>
+
+            <div className="action-footer">
+              <button
+                className="btn-save"
+                onClick={() => saveEvidencia('Curiosidad Sensorial: Introducción', curiosidad, setIsCuriosidadSaved)}
+                disabled={isCuriosidadSaved || !curiosidad.trim() || loading}
+              >
+                {isCuriosidadSaved ? '✓ Curiosidad Guardada' : loading ? 'Guardando...' : 'Guardar Evidencia'}
+              </button>
+            </div>
+            {message && activeTab === 'pensamiento' && <p className="status-msg">{message}</p>}
+
+            <ContinueButton label="Síntesis Final" onClick={continueNext} />
+          </div>
         )}
 
-        {/* TAB 4: SÍNTESIS FINAL */}
+        {/* PESTAÑA 4: SÍNTESIS FINAL (ANIMACIONES + VIDEO YELLOWSTONE + DIBUJO + CONCLUSIÓN) */}
         {activeTab === 'sintesis' && (
-          <FadeContent blur duration={500} easing="ease-out" initialOpacity={0}>
-            <div className="intro-panel-glass">
-              <h2 className="panel-title-clean">4. Síntesis y Registro de Saberes Previos</h2>
-              <p className="panel-desc-clean">
-                Dibuja en el lienzo tu propio modelo mental: ¿cómo imaginas que el cerebro se conecta simultáneamente
-                con los cinco sentidos? Luego registra tus conclusiones para la bitácora del curso.
-              </p>
+          <div className="sintesis-section animate-fade">
+            <h3 className="mb-3">🧩 Conceptos Clave del Enfoque Sistémico</h3>
+            <p className="section-desc">
+              Interactúa con estas tres dimensiones sistémicas aplicadas a la percepción y la neurofisiología:
+            </p>
 
-              {/* Pizarra interactiva para dibujar el modelo mental */}
-              <DrawingCanvas />
+            <SystemicAnimations />
 
-              {/* Registro de evidencias escritas */}
-              <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <div className="evidencia-box">
-                  <h4>💡 1. Curiosidad Inicial</h4>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                    ¿Qué pregunta o misterio sobre cómo tus sentidos engañan o ayudan a tu cerebro te gustaría resolver en este laboratorio?
-                  </p>
-                  <textarea
-                    className="glass-textarea"
-                    rows="3"
-                    value={curiosidad}
-                    onChange={(e) => setCuriosidad(e.target.value)}
-                    disabled={isCuriosidadSaved}
-                    placeholder="Escribe aquí tu curiosidad..."
-                    style={{ width: '100%', marginTop: '0.5rem' }}
-                  />
-                  <button
-                    className="btn-save"
-                    style={{ marginTop: '0.5rem' }}
-                    onClick={() => saveEvidencia('Curiosidad Sensorial: Introducción', curiosidad, setIsCuriosidadSaved)}
-                    disabled={isCuriosidadSaved || !curiosidad.trim() || loading}
-                  >
-                    {isCuriosidadSaved ? '✓ Curiosidad Guardada' : 'Guardar Curiosidad'}
-                  </button>
-                </div>
+            <hr className="separator" />
 
-                <div className="evidencia-box">
-                  <h4>📝 2. Síntesis Final: ¿Por qué los sentidos son un sistema?</h4>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                    Explica con tus propias palabras por qué el cerebro y los 5 sentidos forman un sistema y no un simple grupo de órganos sueltos.
-                  </p>
-                  <textarea
-                    className="glass-textarea"
-                    rows="4"
-                    value={conclusion}
-                    onChange={(e) => setConclusion(e.target.value)}
-                    disabled={isConclusionSaved}
-                    placeholder="Escribe tu explicación sistémica..."
-                    style={{ width: '100%', marginTop: '0.5rem' }}
-                  />
-                  <button
-                    className="btn-save"
-                    style={{ marginTop: '0.5rem' }}
-                    onClick={() => saveEvidencia('Síntesis Final: Introducción a los Sentidos', conclusion, setIsConclusionSaved)}
-                    disabled={isConclusionSaved || !conclusion.trim() || loading}
-                  >
-                    {isConclusionSaved ? '✓ Síntesis Guardada' : 'Guardar Síntesis'}
-                  </button>
-                </div>
-              </div>
+            <h3 className="mb-3">📽️ Apreciación Sistémica: Cadenas de Efectos en Yellowstone</h3>
+            <p className="section-desc">
+              En 1995 los lobos fueron reintroducidos al Parque Yellowstone, desencadenando una cascada ecológica que incluso cambió la forma de los ríos.
+              En el cuerpo humano, la pérdida o sobreestímulo de un solo sentido reorganiza toda la corteza cerebral (neuroplasticidad compensatoria):
+            </p>
 
-              {message && <p className="status-msg" style={{ marginTop: '1rem', textAlign: 'center' }}>{message}</p>}
+            <div className="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/5QvtYwyHpfc"
+                title="Cómo los lobos cambiaron el curso de los ríos"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
-          </FadeContent>
+
+            <p className="section-desc" style={{ marginTop: '1.5rem' }}>
+              Observa el video y describe al menos <strong>tres conexiones sistémicas</strong> entre componentes que demuestren cómo una sola causa produce efectos en cadena:
+            </p>
+
+            <div className="input-group">
+              <textarea
+                value={apreciacion}
+                onChange={(e) => setApreciacion(e.target.value)}
+                disabled={isApreciacionSaved}
+                placeholder="Escribe aquí tus 3 conexiones sistémicas observadas..."
+                className="glass-textarea"
+                rows="4"
+              ></textarea>
+            </div>
+
+            <div className="action-footer">
+              <button
+                className="btn-save"
+                onClick={() => saveEvidencia('Apreciación: Interconexiones Sensoriales', apreciacion, setIsApreciacionSaved)}
+                disabled={isApreciacionSaved || !apreciacion.trim() || loading}
+              >
+                {isApreciacionSaved ? '✓ Apreciación Guardada' : loading ? 'Guardando...' : 'Guardar Apreciación'}
+              </button>
+            </div>
+
+            <hr className="separator" />
+
+            <h3 className="mb-3">🎨 Dibuja tu Modelo Mental Inicial</h3>
+            <p className="section-desc">
+              Antes de iniciar las simulaciones avanzadas, queremos conocer tu concepción actual.
+              Dibuja en la pizarra cómo imaginas que el cerebro se conecta en paralelo con los 5 sentidos:
+            </p>
+
+            <DrawingCanvas />
+
+            <hr className="separator" />
+
+            <h3 className="mb-3">📝 Síntesis Final</h3>
+            <p className="section-desc">
+              A modo de cierre de este laboratorio introductorio, explica con tus propias palabras
+              por qué el cerebro y los cinco sentidos forman un <strong>sistema vivo</strong> y no un simple grupo de órganos aislados:
+            </p>
+
+            <div className="input-group">
+              <textarea
+                value={conclusion}
+                onChange={(e) => setConclusion(e.target.value)}
+                disabled={isConclusionSaved}
+                placeholder="Redacta aquí tu síntesis final sobre el sistema sensorial..."
+                className="glass-textarea"
+                rows="6"
+              ></textarea>
+            </div>
+
+            <div className="action-footer">
+              <button
+                className="btn-save"
+                onClick={() => saveEvidencia('Síntesis Final: Introducción a los Sentidos', conclusion, setIsConclusionSaved)}
+                disabled={isConclusionSaved || !conclusion.trim() || loading}
+              >
+                {isConclusionSaved ? '✓ Conclusión Guardada' : loading ? 'Guardando...' : 'Guardar Evidencia'}
+              </button>
+            </div>
+            {message && activeTab === 'sintesis' && <p className="status-msg">{message}</p>}
+          </div>
         )}
       </div>
     </div>
   );
 }
 
+// Botón de navegación guiada entre pestañas
+function ContinueButton({ label, onClick }) {
+  if (!label) return null;
+  return (
+    <div className="action-footer continue-footer" style={{ display: 'flex', justifyContent: 'center', marginTop: '2.5rem' }}>
+      <button className="continue-btn" onClick={onClick}>
+        Continuar: {label} <span className="continue-arrow">→</span>
+      </button>
+    </div>
+  );
+}
+
+// 7 Lineamientos del Pensamiento Sistémico aplicados a Los Sentidos
+const LINEAMIENTOS_DATA = [
+  {
+    num: 1,
+    icono: '🧩',
+    nombre: 'Componentes',
+    descripcion: 'Reconocer receptores biológicos, vías nerviosas aferentes y centros corticales cerebrales.',
+    labs: 'Vista · Oído · Tacto',
+  },
+  {
+    num: 2,
+    icono: '🔗',
+    nombre: 'Causalidad',
+    descripcion: 'Rastrear la secuencia estímulo físico → transducción bioeléctrica → interpretación consciente.',
+    labs: 'Olfato y Gusto · Vista',
+  },
+  {
+    num: 3,
+    icono: '🖼️',
+    nombre: 'Representación',
+    descripcion: 'Construir mapas corticales, homúnculos de Penfield y modelos tridimensionales interactivos.',
+    labs: 'Tacto · Vista · Oído',
+  },
+  {
+    num: 4,
+    icono: '📏',
+    nombre: 'Escalas y Cantidades',
+    descripcion: 'Medir umbrales y magnitudes perceptivas: decibeles (dB), frecuencias (Hz), longitudes de onda (nm).',
+    labs: 'Oído · Vista',
+  },
+  {
+    num: 5,
+    icono: '⚖️',
+    nombre: 'Conservación',
+    descripcion: 'La energía del entorno se transforma en potenciales de acción sin perder la fidelidad del mensaje.',
+    labs: 'Integración Sensorial',
+  },
+  {
+    num: 6,
+    icono: '🎯',
+    nombre: 'Estructura y Propósito',
+    descripcion: 'El sistema sensorial existe con el fin adaptativo de anticipar riesgos, alimentarse y sobrevivir.',
+    labs: 'Integración Sensorial',
+  },
+  {
+    num: 7,
+    icono: '🔄',
+    nombre: 'Estabilidad (Homeostasis)',
+    descripcion: 'Mecanismos de adaptación sensorial, habituación y plasticidad neuronal compensatoria.',
+    labs: 'Integración Sensorial',
+  },
+];
+
+function LineamientosRoadmap() {
+  const [active, setActive] = useState(null);
+
+  return (
+    <div className="lineamientos-container">
+      <div className="lineamientos-grid">
+        {LINEAMIENTOS_DATA.map((l) => (
+          <div
+            key={l.num}
+            className={`lineamiento-card ${active === l.num ? 'active' : ''}`}
+            onClick={() => setActive(active === l.num ? null : l.num)}
+          >
+            <div className="lineamiento-head">
+              <span className="lineamiento-num">{l.num}</span>
+              <span className="lineamiento-icon">{l.icono}</span>
+              <span className="lineamiento-name">{l.nombre}</span>
+            </div>
+            {active === l.num && (
+              <div className="lineamiento-body">
+                <p>{l.descripcion}</p>
+                <span className="lineamiento-lab">📚 Se aplica en: {l.labs}</span>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="roadmap-map glass-panel">
+        <div className="roadmap-chain">
+          {LINEAMIENTOS_DATA.map((l, i) => (
+            <React.Fragment key={l.num}>
+              <span className="roadmap-node">{l.num}</span>
+              {i < LINEAMIENTOS_DATA.length - 1 && <span className="roadmap-arrow">→</span>}
+            </React.Fragment>
+          ))}
+        </div>
+        <p className="roadmap-caption">
+          🗺️ Tu recorrido: primero identificarás <strong>componentes</strong> y <strong>causalidad</strong> en la
+          vista y el oído; luego <strong>representarás</strong> y <strong>medirás</strong> en el olfato, gusto y tacto;
+          y cerrarás evaluando la <strong>conservación</strong>, el <strong>propósito</strong> y la <strong>homeostasis</strong> en la
+          integración sensorial completa.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// Subcomponente de Animaciones Interactivas del Enfoque Sistémico
+function SystemicAnimations() {
+  const [activeConcept, setActiveConcept] = useState(0);
+
+  const concepts = [
+    {
+      title: 'Totalidad e Interconexión',
+      desc: 'Un sistema es más que la suma de sus partes. Si aíslas un receptor del cerebro, pierde su función perceptiva.',
+      icon: '🧩',
+    },
+    {
+      title: 'Causalidad y Retroalimentación',
+      desc: 'Las señales viajan en cadena: estímulo → receptor → tálamo → corteza, y el cerebro retroalimenta la atención.',
+      icon: '🔄',
+    },
+    {
+      title: 'Propósito y Homeostasis Sensorial',
+      desc: 'El sistema ajusta su sensibilidad continuamente (adaptación a la luz, habituación a olores) para mantener el balance.',
+      icon: '🎯',
+    },
+  ];
+
+  return (
+    <div className="systemic-animations glass-panel" style={{ position: 'relative', overflow: 'hidden', borderRadius: '15px' }}>
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 0,
+          opacity: 0.4,
+          pointerEvents: 'none',
+        }}
+      >
+        <Aurora colorStops={['#1e293b', '#7c3aed', '#0f172a']} blend={0.5} amplitude={1.2} speed={0.8} />
+      </div>
+
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <div className="concept-tabs">
+          {concepts.map((c, i) => (
+            <button
+              key={i}
+              className={`concept-btn ${activeConcept === i ? 'active' : ''}`}
+              onClick={() => setActiveConcept(i)}
+            >
+              <span className="concept-icon">{c.icon}</span>
+              <span className="concept-title">{c.title}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="concept-content">
+          <div style={{ marginBottom: '1rem', minHeight: '32px' }}>
+            <BlurText
+              key={activeConcept}
+              text={concepts[activeConcept].title}
+              className="text-neon-purple"
+              style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#c084fc' }}
+              delay={40}
+            />
+          </div>
+          <p className="concept-desc">{concepts[activeConcept].desc}</p>
+
+          <div className="concept-visual">
+            {activeConcept === 0 && (
+              <div className="anim-interconnection">
+                <div className="node node-1" style={{ background: '#a855f7' }}>Cerebro</div>
+                <div className="node node-2" style={{ background: '#3b82f6' }}>Ojo 👁️</div>
+                <div className="node node-3" style={{ background: '#f97316' }}>Piel 🖐️</div>
+                <div className="connection line-1"></div>
+                <div className="connection line-2"></div>
+                <div className="connection line-3"></div>
+              </div>
+            )}
+            {activeConcept === 1 && (
+              <div className="anim-causality">
+                <div className="gear gear-1">⚙️</div>
+                <div className="gear gear-2">⚙️</div>
+                <div className="gear gear-3">⚙️</div>
+              </div>
+            )}
+            {activeConcept === 2 && (
+              <div className="anim-homeostasis">
+                <div className="scale">
+                  <div className="scale-base"></div>
+                  <div className="scale-arm">
+                    <div className="weight weight-l" style={{ background: '#3b82f6' }}>Estímulo</div>
+                    <div className="weight weight-r" style={{ background: '#a855f7' }}>Adaptación</div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

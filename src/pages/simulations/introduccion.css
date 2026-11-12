@@ -43,10 +43,10 @@
 }
 
 .tab-navigation button.active {
-  background: rgba(0, 204, 255, 0.1);
-  border-color: #00ccff;
-  color: #00ccff;
-  box-shadow: 0 0 15px rgba(0, 204, 255, 0.2);
+  background: rgba(168, 85, 247, 0.15);
+  border-color: #a855f7;
+  color: #c084fc;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
 }
 
 .tab-content {
@@ -105,8 +105,8 @@
 .glass-textarea:focus {
   outline: none;
   background: rgba(255, 255, 255, 0.05);
-  border-color: #00ccff;
-  box-shadow: 0 0 20px rgba(0, 204, 255, 0.1);
+  border-color: #a855f7;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
 }
 
 .glass-textarea:disabled {
@@ -128,14 +128,14 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #005588, #00aadd);
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
   color: white;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
 }
 
 .btn-save:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 15px 30px rgba(0, 170, 221, 0.4);
+  box-shadow: 0 15px 30px rgba(168, 85, 247, 0.5);
 }
 
 .btn-save:disabled {
@@ -600,9 +600,9 @@
 }
 
 .lineamiento-card.active {
-  border-color: #00ccff;
-  background: rgba(0, 204, 255, 0.08);
-  box-shadow: 0 0 15px rgba(0, 204, 255, 0.15);
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.12);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
 }
 
 .lineamiento-head {
@@ -615,7 +615,7 @@
   min-width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
   color: white;
   font-weight: 800;
   display: flex;
@@ -653,9 +653,9 @@
   display: inline-block;
   padding: 5px 12px;
   border-radius: 20px;
-  background: rgba(139, 92, 246, 0.15);
-  border: 1px solid rgba(139, 92, 246, 0.4);
-  color: #c4b5fd;
+  background: rgba(168, 85, 247, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  color: #e9d5ff;
   font-size: 0.82rem;
   font-weight: 600;
 }
@@ -681,19 +681,19 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(0, 204, 255, 0.1);
-  border: 2px solid #00ccff;
-  color: #00ccff;
+  background: rgba(168, 85, 247, 0.15);
+  border: 2px solid #a855f7;
+  color: #c084fc;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.05rem;
-  box-shadow: 0 0 12px rgba(0, 204, 255, 0.3);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
 }
 
 .roadmap-arrow {
-  color: #667eea;
+  color: #a855f7;
   font-size: 1.3rem;
   font-weight: 700;
   animation: pulseLine 1.5s ease-in-out infinite;
@@ -709,7 +709,7 @@
 }
 
 .roadmap-caption strong {
-  color: #00ccff;
+  color: #c084fc;
 }
 
 @media (max-width: 768px) {

@@ -4,7 +4,7 @@ import './DrawingCanvas.css';
 export default function DrawingCanvas() {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [color, setColor] = useState('#ef4444'); // Rojo por defecto (arterias)
+  const [color, setColor] = useState('#a855f7'); // Violeta por defecto (cerebro / sentidos)
   const [brushSize, setBrushSize] = useState(4);
   const [toolMode, setToolMode] = useState('draw'); // 'draw' o 'text'
   const [textInput, setTextInput] = useState('');
@@ -88,7 +88,7 @@ export default function DrawingCanvas() {
     const dataUrl = canvas.toDataURL('image/png');
     const a = document.createElement('a');
     a.href = dataUrl;
-    a.download = 'representacion_sistema_circulatorio.png';
+    a.download = 'representacion_sistema_sensorial.png';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -146,7 +146,7 @@ export default function DrawingCanvas() {
           className={`drawing-board glass-panel ${toolMode === 'text' ? 'text-mode' : 'draw-mode'}`}
         />
       </div>
-      <p className="canvas-hint">Utiliza el marco en blanco para dibujar tu propia representación del sistema circulatorio (corazón, vasos, pulmones). Puedes exportarlo a tu dispositivo al terminar.</p>
+      <p className="canvas-hint">Utiliza el lienzo para dibujar tu propia representación de cómo el cerebro se conecta simultáneamente con los cinco sentidos (vías aferentes, nervios y centros de procesamiento). Puedes exportarlo a tu dispositivo al terminar.</p>
     </div>
   );
 }
