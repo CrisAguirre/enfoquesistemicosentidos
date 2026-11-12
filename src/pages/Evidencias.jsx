@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { evidenciaApi } from '../api/evidencia';
 import './pages.css';
 
@@ -41,9 +42,10 @@ export default function Evidencias() {
   return (
     <div className="page">
       <div className="page-header">
-        <h1 className="page-title">Evidencias y Análisis</h1>
+        <Link to="/sesiones" className="back-link">← Volver a Sesiones</Link>
+        <h1 className="page-title">Bitácora de Evidencias</h1>
         <p className="page-subtitle">
-          Registra tus síntesis, informes, diagramas (en texto) y conclusiones de cada sesión.
+          Registros, síntesis, curiosidades y modelos explicativos guardados a lo largo del curso.
         </p>
       </div>
 

@@ -1,6 +1,15 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+const SIM_ROUTES = {
+  1: { path: '/laboratorio/introduccion', name: 'Lab 1 Introducción' },
+  2: { path: '/laboratorio/vista', name: 'Lab 2 Vista' },
+  3: { path: '/laboratorio/oido', name: 'Lab 3 Oído' },
+  4: { path: '/laboratorio/olfato-gusto', name: 'Lab 4 Olfato y Gusto' },
+  5: { path: '/laboratorio/tacto', name: 'Lab 5 Tacto' },
+  6: { path: '/laboratorio/integracion-sensorial', name: 'Lab 6 Integración' },
+};
+
 function NavButton({ label, onClick }) {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem', paddingBottom: '2rem' }}>
@@ -62,13 +71,37 @@ export default function SimulationWrapper({ simNumber, title, description, icon,
 
   return (
     <div className="page sim-page">
-      <div className="page-header">
-        <Link to="/laboratorio" className="back-link">← Volver al Laboratorio</Link>
-        <h1 className="page-title">
-          {icon && <span className="page-title-icon">{icon}</span>}
-          Laboratorio {simNumber}: {title}
-        </h1>
-        <p className="page-subtitle">{description}</p>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
+        <div>
+          <Link to="/laboratorio" className="back-link">← Volver al Laboratorio</Link>
+          <h1 className="page-title">
+            {icon && <span className="page-title-icon">{icon}</span>}
+            Laboratorio {simNumber}: {title}
+          </h1>
+          <p className="page-subtitle">{description}</p>
+        </div>
+
+        {/* Accesos rápidos a laboratorios adyacentes */}
+        <div style={{ display: 'flex', gap: '0.5rem', alignSelf: 'center', flexWrap: 'wrap' }}>
+          {simNumber > 1 && (
+            <Link
+              to={SIM_ROUTES[simNumber - 1]?.path || '/laboratorio'}
+              className="btn btn-outline"
+              style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem' }}
+            >
+              ← {SIM_ROUTES[simNumber - 1]?.name}
+            </Link>
+          )}
+          {simNumber < 6 && (
+            <Link
+              to={SIM_ROUTES[simNumber + 1]?.path || '/laboratorio'}
+              className="btn btn-outline"
+              style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', borderColor: 'var(--color-primary-400)', color: 'var(--color-primary-300)' }}
+            >
+              {SIM_ROUTES[simNumber + 1]?.name} →
+            </Link>
+          )}
+        </div>
       </div>
 
       {info && (
@@ -99,6 +132,31 @@ export default function SimulationWrapper({ simNumber, title, description, icon,
 
       <div className="sim-content">
         {contenido}
+      </div>
+
+      {/* Navegación al pie del laboratorio */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '3rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)', flexWrap: 'wrap', gap: '1rem' }}>
+        <div>
+          {simNumber > 1 && (
+            <Link to={SIM_ROUTES[simNumber - 1]?.path || '/laboratorio'} className="btn btn-outline" style={{ fontSize: '0.85rem' }}>
+              ← Anterior: {SIM_ROUTES[simNumber - 1]?.name}
+            </Link>
+          )}
+        </div>
+        <Link to="/laboratorio" className="btn btn-outline" style={{ fontSize: '0.85rem' }}>
+          Hub de Laboratorios 🔬
+        </Link>
+        <div>
+          {simNumber < 6 ? (
+            <Link to={SIM_ROUTES[simNumber + 1]?.path || '/laboratorio'} className="btn btn-primary" style={{ fontSize: '0.85rem' }}>
+              Siguiente: {SIM_ROUTES[simNumber + 1]?.name} →
+            </Link>
+          ) : (
+            <Link to="/postest" className="btn btn-primary" style={{ fontSize: '0.85rem', background: '#10b981', borderColor: '#10b981' }}>
+              🎓 Realizar Post-Test Final →
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

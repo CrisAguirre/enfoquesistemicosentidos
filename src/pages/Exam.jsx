@@ -128,7 +128,7 @@ export default function Exam({ examId }) {
              porcentaje >= 60 ? 'Buen trabajo, pero aún hay relaciones sistémicas que puedes mejorar.' : 
              'Te recomendamos repasar el laboratorio y la causalidad entre los componentes antes de volver a intentarlo.'}
           </p>
-          <div className="hero-actions" style={{ marginTop: '2rem', justifyContent: 'center' }}>
+          <div className="hero-actions" style={{ marginTop: '2rem', justifyContent: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
             <button className="btn btn-primary" onClick={() => { 
               setResult(null); 
               setAnswers({}); 
@@ -136,6 +136,9 @@ export default function Exam({ examId }) {
               setStep('intro');
             }}>Intentar de nuevo</button>
             <Link to="/laboratorio" className="btn btn-outline">Volver al Laboratorio</Link>
+            <Link to="/resultados" className="btn btn-outline" style={{ borderColor: 'var(--color-primary-400)', color: 'var(--color-primary-300)' }}>
+              Ver Mis Resultados 🏆
+            </Link>
           </div>
         </div>
       </div>

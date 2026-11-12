@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import SimCard from '../components/shared/SimCard';
 import { FadeContent } from '../reactbits';
 import './pages.css';
@@ -31,6 +31,35 @@ export default function LaboratorioHub() {
         <p className="page-subtitle">
           Explora las 6 fases interactivas de los sentidos y el cerebro desde el pensamiento sistémico.
         </p>
+      </div>
+
+      {/* Acceso Rápido al Pre-Test Diagnóstico */}
+      <div
+        className="glass-card"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '1rem',
+          padding: '1.25rem 1.5rem',
+          marginBottom: '2rem',
+          borderLeft: '5px solid #a855f7',
+          background: 'rgba(168, 85, 247, 0.08)',
+        }}
+      >
+        <div>
+          <span style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', color: '#c084fc' }}>
+            Diagnóstico Inicial
+          </span>
+          <h3 style={{ margin: '0.25rem 0', fontSize: '1.15rem' }}>📋 Pre-Test: Saberes Previos</h3>
+          <p style={{ margin: 0, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+            Realiza esta prueba antes de iniciar para evaluar tus conocimientos previos sobre el sistema sensorial.
+          </p>
+        </div>
+        <Link to="/pretest" className="btn btn-primary" style={{ whiteSpace: 'nowrap' }}>
+          Realizar Pre-Test →
+        </Link>
       </div>
 
       <section className="sim-block">
@@ -150,6 +179,35 @@ export default function LaboratorioHub() {
           </FadeContent>
         </div>
       </section>
+
+      {/* Acceso Rápido al Post-Test Final */}
+      <div
+        className="glass-card"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '1rem',
+          padding: '1.25rem 1.5rem',
+          marginTop: '2rem',
+          borderLeft: '5px solid #10b981',
+          background: 'rgba(16, 185, 129, 0.08)',
+        }}
+      >
+        <div>
+          <span style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', color: '#34d399' }}>
+            Cierre y Validación
+          </span>
+          <h3 style={{ margin: '0.25rem 0', fontSize: '1.15rem' }}>🎓 Post-Test: Evaluación Final</h3>
+          <p style={{ margin: 0, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+            Presenta esta evaluación al culminar los laboratorios para certificar tu avance en pensamiento sistémico.
+          </p>
+        </div>
+        <Link to="/postest" className="btn btn-outline" style={{ borderColor: '#10b981', color: '#34d399', whiteSpace: 'nowrap' }}>
+          Realizar Post-Test →
+        </Link>
+      </div>
     </div>
   );
 }

@@ -13,10 +13,17 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [wakeUpCountdown, setWakeUpCountdown] = useState(0);
 
-  const { login } = useAuth();
+  const { isAuthenticated, login } = useAuth();
   const { status, isWakingUp, wakeUpProgress, wakeUpServer } = useServerStatus();
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      const to = location.state?.from?.pathname || '/landing';
+      navigate(to, { replace: true });
+    }
+  }, [isAuthenticated, location, navigate]);
 
   useEffect(() => {
     if (isWakingUp) {

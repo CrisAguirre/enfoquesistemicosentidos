@@ -22,6 +22,7 @@ import IntegracionSensorial from './pages/simulations/IntegracionSensorial';
 export default function App() {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/landing" replace />} />
       <Route path="/login" element={<Login />} />
 
       <Route element={<ProtectedRoute />}>
@@ -47,6 +48,8 @@ export default function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/usuarios" element={<UsersList />} />
           </Route>
+
+          <Route path="*" element={<Navigate to="/landing" replace />} />
         </Route>
       </Route>
 

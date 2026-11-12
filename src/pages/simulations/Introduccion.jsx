@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { evidenciaApi } from '../../api/evidencia';
 import DrawingCanvas from '../../components/shared/DrawingCanvas';
 import SensoryPuzzle from '../../components/shared/SensoryPuzzle';
@@ -149,6 +150,9 @@ export default function Introduccion() {
   return (
     <div className="intro-lab-container animate-fade">
       <div className="intro-header">
+        <Link to="/laboratorio" className="back-link" style={{ marginBottom: '1rem', display: 'inline-block' }}>
+          ← Volver al Laboratorio
+        </Link>
         <h1>Laboratorio 1: Los Sentidos y el Pensamiento Sistémico</h1>
         <p className="subtitle">
           El cerebro como eje central y los cinco sentidos como subsistemas interconectados de captación de información.
@@ -568,6 +572,16 @@ export default function Introduccion() {
               </button>
             </div>
             {message && activeTab === 'sintesis' && <p className="status-msg">{message}</p>}
+
+            {/* Navegación al siguiente laboratorio */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2.5rem', flexWrap: 'wrap' }}>
+              <Link to="/laboratorio" className="btn btn-outline" style={{ padding: '0.8rem 1.6rem' }}>
+                ← Hub de Laboratorios
+              </Link>
+              <Link to="/laboratorio/vista" className="btn btn-primary" style={{ padding: '0.8rem 1.6rem' }}>
+                Siguiente: Lab 2 La Vista 👁️ →
+              </Link>
+            </div>
           </div>
         )}
       </div>
