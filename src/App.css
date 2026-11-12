@@ -119,37 +119,6 @@
   100% { transform: translateY(-30px) rotate(15deg); opacity: 0.25; }
 }
 
-/* ECG Line Animation */
-.ecg-line-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 25vh;
-  min-height: 120px;
-  opacity: 0.25;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.ecg-line {
-  width: 200%;
-  height: 100%;
-  fill: none;
-  stroke: #3b82f6;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0 6px #3b82f6);
-  animation: ecg-scroll 8s linear infinite;
-}
-
-@keyframes ecg-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 .hero-content {
   position: relative;
   z-index: 10;
@@ -171,17 +140,10 @@
   margin-bottom: var(--space-xl);
 }
 
-.hero-badge .pulse {
-  width: 8px;
-  height: 8px;
-  background: var(--color-primary-400);
-  border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.3); }
+.hero-badge-tag {
+  color: var(--color-primary-300);
+  font-size: 0.95rem;
+  line-height: 1;
 }
 
 .hero-banner {
@@ -199,7 +161,7 @@
   line-height: 1.6;
   text-align: center;
   overflow: hidden;
-  box-shadow: 0 0 22px rgba(56, 189, 248, 0.18);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .hero-banner::before {
@@ -227,6 +189,16 @@
   line-height: 1.15;
   margin-bottom: var(--space-lg);
   letter-spacing: -0.02em;
+}
+
+.hero-highlight {
+  display: block;
+  color: #c084fc;
+}
+
+.text-primary-accent {
+  color: #c084fc;
+  font-weight: 700;
 }
 
 .hero-subtitle {

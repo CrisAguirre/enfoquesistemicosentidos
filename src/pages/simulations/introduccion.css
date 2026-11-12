@@ -46,7 +46,7 @@
   background: rgba(168, 85, 247, 0.15);
   border-color: #a855f7;
   color: #c084fc;
-  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 .tab-content {
@@ -106,7 +106,7 @@
   outline: none;
   background: rgba(255, 255, 255, 0.05);
   border-color: #a855f7;
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .glass-textarea:disabled {
@@ -130,12 +130,12 @@
   transition: all 0.3s ease;
   background: linear-gradient(135deg, #7c3aed, #a855f7);
   color: white;
-  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
 .btn-save:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 15px 30px rgba(168, 85, 247, 0.5);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
 }
 
 .btn-save:disabled {
@@ -430,7 +430,9 @@
   text-align: center;
   padding: 25px;
   margin-top: 25px;
-  border-left: 4px solid #00ccff;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 12px;
 }
 
 .inspiring-text p {
@@ -602,7 +604,7 @@
 .lineamiento-card.active {
   border-color: #a855f7;
   background: rgba(168, 85, 247, 0.12);
-  box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .lineamiento-head {
@@ -689,7 +691,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.05rem;
-  box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 .roadmap-arrow {

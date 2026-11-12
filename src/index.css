@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
 /* ===== DESIGN TOKENS — LOS SENTIDOS ===== */
 :root {
@@ -52,7 +52,7 @@
 
   /* Tipografía */
   --font-primary: 'Outfit', system-ui, -apple-system, sans-serif;
-  --font-secondary: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-secondary: 'Outfit', system-ui, -apple-system, sans-serif;
 
   /* Espaciado */
   --space-xs: 0.25rem;
@@ -77,7 +77,7 @@
   --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Sombras */
-  --shadow-glow: 0 0 40px rgba(168, 85, 247, 0.2);
+  --shadow-glow: 0 12px 32px rgba(0, 0, 0, 0.35);
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.2);
 }
 
@@ -92,7 +92,7 @@
   --text-secondary: #475569;
   --text-muted: #64748b;
 
-  --shadow-glow: 0 0 40px rgba(168, 85, 247, 0.12);
+  --shadow-glow: 0 12px 32px rgba(0, 0, 0, 0.1);
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
@@ -189,10 +189,8 @@ button {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-primary-400), var(--color-sense-vista));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary-300);
+  font-weight: 700;
 }
 
 /* ===== GLASSMORPHISM ===== */
@@ -240,11 +238,11 @@ button {
 .btn-primary {
   background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
   color: var(--color-white);
-  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 6px 24px rgba(168, 85, 247, 0.55);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
   transform: translateY(-2px);
 }
 

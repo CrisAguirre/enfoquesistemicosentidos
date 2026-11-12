@@ -70,10 +70,10 @@
 .part-card-translated {
   background: rgba(15, 23, 42, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-left: 3px solid var(--part-accent, var(--color-primary-400));
   border-radius: var(--radius-md);
   padding: 0.85rem 1rem;
   transition: all var(--transition-base);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .part-card-translated:hover {

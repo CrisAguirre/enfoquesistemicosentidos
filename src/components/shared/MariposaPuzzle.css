@@ -125,9 +125,9 @@
 .mp-quote {
   margin: 0 0 20px 0;
   padding: 18px 22px;
-  border-left: 4px solid #00ccff;
-  background: rgba(0, 204, 255, 0.06);
-  border-radius: 0 12px 12px 0;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: 12px;
   color: #e2e8f0;
   font-style: italic;
   line-height: 1.7;

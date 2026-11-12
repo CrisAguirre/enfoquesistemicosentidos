@@ -3,7 +3,6 @@ import '../App.css';
 import {
   SplitText,
   BlurText,
-  GradientText,
   Aurora,
   Particles,
   FadeContent,
@@ -43,7 +42,7 @@ export default function Landing() {
         <div className="hero-content">
           <FadeContent delay={0.2} direction="up" distance={30}>
             <span className="hero-badge">
-              <span className="pulse" style={{ background: '#c084fc', boxShadow: '0 0 12px #c084fc' }}></span>
+              <span className="hero-badge-tag" aria-hidden="true">✦</span>
               Pensamiento Sistémico · Ciencias Naturales
             </span>
           </FadeContent>
@@ -62,13 +61,9 @@ export default function Landing() {
               animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
               animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
             />
-            <GradientText
-              colors={['#c084fc', '#3b82f6', '#ec4899', '#c084fc']}
-              animationSpeed={3}
-              className="hero-title"
-            >
+            <span className="hero-highlight">
               Cerebro Humano
-            </GradientText>
+            </span>
           </div>
 
           <div className="hero-subtitle">
@@ -100,9 +95,9 @@ export default function Landing() {
             <FadeContent direction="up">
               <h2>
                 Aprende con{' '}
-                <GradientText colors={['#c084fc', '#38bdf8', '#c084fc']} animationSpeed={4}>
+                <span className="text-primary-accent">
                   Pensamiento Sistémico
-                </GradientText>
+                </span>
               </h2>
               <p>
                 Descubre los 7 lineamientos del Dr. Eliécer Pineda Ballesteros aplicados a la neurociencia de los sentidos.

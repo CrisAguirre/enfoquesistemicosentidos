@@ -40,7 +40,7 @@ export default function SketchfabViewer({
 
       {/* Acordeón de partes traducidas y función sistémica */}
       {translatedParts && translatedParts.length > 0 && (
-        <div className="sketchfab-parts-accordion" style={{ borderLeft: `4px solid ${accentColor}` }}>
+        <div className="sketchfab-parts-accordion" style={{ borderTop: `2px solid ${accentColor}` }}>
           <div className="sketchfab-parts-header" onClick={() => setShowParts(!showParts)}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
               <span style={{ fontSize: '1.25rem' }}>📖</span>
