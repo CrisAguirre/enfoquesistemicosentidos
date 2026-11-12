@@ -46,7 +46,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-xl);
-  background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15), transparent 60%);
+  background: radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.15), transparent 60%);
 }
 
 .auth-card {
