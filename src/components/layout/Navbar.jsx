@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import ServerStatusIndicator from '../shared/ServerStatusIndicator';
+import AppLogo from '../shared/AppLogo';
 
 export default function Navbar() {
   const { user, isAdmin, logout } = useAuth();
@@ -21,8 +22,10 @@ export default function Navbar() {
     <nav className="app-nav" aria-label="Navegación principal">
       <div className="app-nav-inner">
         <Link to="/landing" className="app-nav-brand" onClick={closeMenu}>
-          <span className="app-nav-logo" role="img" aria-label="Cerebro">🧠</span>
-          <span>Los Sentidos</span>
+          <span className="app-nav-logo">
+            <AppLogo size={32} />
+          </span>
+          <span className="app-nav-title">Los Sentidos</span>
         </Link>
 
         {/* Botón hamburguesa móvil */}

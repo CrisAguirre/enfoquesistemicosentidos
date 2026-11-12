@@ -4,6 +4,7 @@ import { authApi } from '../api/auth';
 import { useAuth } from '../context/AuthContext';
 import { useServerStatus } from '../context/ServerStatusContext';
 import ServerStatusIndicator from '../components/shared/ServerStatusIndicator';
+import AppLogo from '../components/shared/AppLogo';
 import './pages.css';
 
 export default function Login() {
@@ -65,28 +66,7 @@ export default function Login() {
     <div className="auth-page">
       <div className="auth-card">
         <div className="auth-logo">
-          <svg viewBox="0 0 80 80" width="80" height="80" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="lgBrain" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#c084fc" />
-                <stop offset="50%" stopColor="#a855f7" />
-                <stop offset="100%" stopColor="#7c3aed" />
-              </linearGradient>
-            </defs>
-            <circle cx="40" cy="40" r="38" fill="rgba(168,85,247,0.12)" stroke="#a855f7" strokeWidth="1.5" />
-            <path d="M40 16c-8 0-14 3-17 8-2 3-3 7-2 11 0 2-1 4-3 5-1 1-2 3-2 5 0 3 2 5 5 6 1 0 2 1 3 3 1 3 4 5 7 6 2 1 4 1 6 0h4c2 1 4 1 6 0 3-1 6-3 7-6 1-2 2-3 3-3 3-1 5-3 5-6 0-2-1-4-2-5-2-1-3-3-3-5 1-4 0-8-2-11-3-5-9-8-17-8z" fill="url(#lgBrain)" />
-            <path d="M40 20v36" fill="none" stroke="#e9d5ff" strokeWidth="1.2" strokeDasharray="2 2" opacity="0.5"/>
-            <circle cx="22" cy="22" r="4" fill="#f59e0b" opacity="0.85"><title>Vista</title></circle>
-            <circle cx="58" cy="22" r="4" fill="#3b82f6" opacity="0.85"><title>Oído</title></circle>
-            <circle cx="40" cy="10" r="3.5" fill="#10b981" opacity="0.85"><title>Olfato</title></circle>
-            <circle cx="22" cy="56" r="4" fill="#ef4444" opacity="0.85"><title>Gusto</title></circle>
-            <circle cx="58" cy="56" r="4" fill="#f97316" opacity="0.85"><title>Tacto</title></circle>
-            <line x1="22" y1="22" x2="30" y2="26" stroke="#f59e0b" strokeWidth="1.2" opacity="0.6"/>
-            <line x1="58" y1="22" x2="50" y2="26" stroke="#3b82f6" strokeWidth="1.2" opacity="0.6"/>
-            <line x1="40" y1="10" x2="40" y2="18" stroke="#10b981" strokeWidth="1.2" opacity="0.6"/>
-            <line x1="22" y1="56" x2="30" y2="48" stroke="#ef4444" strokeWidth="1.2" opacity="0.6"/>
-            <line x1="58" y1="56" x2="50" y2="48" stroke="#f97316" strokeWidth="1.2" opacity="0.6"/>
-          </svg>
+          <AppLogo size={80} />
         </div>
         <h1 className="auth-title">Los Sentidos: Iniciar Sesión</h1>
         <p className="auth-subtitle">Las credenciales son asignadas por la institución.</p>
