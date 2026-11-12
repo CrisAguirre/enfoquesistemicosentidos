@@ -422,3 +422,4 @@ export default function SistemaSensorial2D() {
     </div>
   );
 }
+

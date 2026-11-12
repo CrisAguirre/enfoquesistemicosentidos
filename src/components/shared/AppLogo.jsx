@@ -40,3 +40,4 @@ export default function AppLogo({ size = 32, className = '' }) {
     </svg>
   );
 }
+
