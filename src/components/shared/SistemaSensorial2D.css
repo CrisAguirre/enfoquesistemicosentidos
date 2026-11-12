@@ -1,0 +1,240 @@
+.sistema-sensorial-2d {
+  padding: 1.8rem;
+  margin: 2rem 0;
+  border-radius: var(--radius-xl);
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.ss2d-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.ss2d-badge {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: var(--radius-full);
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #c084fc;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.ss2d-header h4 {
+  font-size: 1.35rem;
+  color: #f1f5f9;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-primary);
+}
+
+.ss2d-desc {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.ss2d-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ss2d-organ-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.ss2d-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-full);
+  background: rgba(30, 41, 59, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.ss2d-btn:hover {
+  background: rgba(51, 65, 85, 0.85);
+  transform: translateY(-1px);
+}
+
+.ss2d-btn.active {
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.ss2d-btn.isolated {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.ss2d-btn .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.ss2d-btn .iso-tag {
+  font-size: 0.65rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background: #ef4444;
+  color: #fff;
+  text-decoration: none;
+}
+
+.ss2d-action-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ss2d-stim-btn {
+  font-size: 0.88rem;
+  padding: 0.6rem 1.4rem;
+}
+
+.ss2d-stim-btn.pulse {
+  transform: scale(1.03);
+}
+
+.ss2d-iso-btn {
+  font-size: 0.88rem;
+  padding: 0.6rem 1.3rem;
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+.ss2d-iso-btn:hover {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.15);
+  color: #fff;
+}
+
+.ss2d-iso-btn.active-iso {
+  border-color: #22c55e;
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.15);
+}
+
+.ss2d-canvas-wrap {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  background: radial-gradient(circle at center, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.ss2d-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ss2d-organ-group {
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.ss2d-organ-group:hover {
+  transform: scale(1.08);
+}
+
+.ss2d-organ-group.selected {
+  transform: scale(1.12);
+}
+
+.ss2d-organ-group.isolated-organ {
+  opacity: 0.45;
+  filter: grayscale(80%);
+}
+
+.ss2d-feedback-box {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  transition: all var(--transition-base);
+}
+
+.ss2d-feedback-box.success {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #e2e8f0;
+}
+
+.ss2d-feedback-box.alert {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fecaca;
+}
+
+.feedback-title {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.feedback-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin: 0.6rem 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.feedback-synergy {
+  margin-top: 0.5rem;
+  color: #cbd5e1;
+  font-style: italic;
+}
+
+[data-theme="light"] .sistema-sensorial-2d {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .ss2d-header h4 {
+  color: #0f172a;
+}
+
+[data-theme="light"] .ss2d-canvas-wrap {
+  background: radial-gradient(circle at center, #f1f5f9 0%, #e2e8f0 100%);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .ss2d-btn {
+  background: #f8fafc;
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #334155;
+}
+
+[data-theme="light"] .ss2d-btn.active {
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .ss2d-feedback-box.success {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+  color: #0c4a6e;
+}

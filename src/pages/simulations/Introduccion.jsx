@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { evidenciaApi } from '../../api/evidencia';
 import DrawingCanvas from '../../components/shared/DrawingCanvas';
 import SensoryPuzzle from '../../components/shared/SensoryPuzzle';
+import SistemaSensorial2D from '../../components/shared/SistemaSensorial2D';
+import SystemicAnimations2D from '../../components/shared/SystemicAnimations2D';
 import { Aurora, BlurText } from '../../reactbits';
 import './introduccion.css';
-import './introduccion_animations.css';
 
 const TAB_ORDER = ['ejemplos', 'sentidos', 'pensamiento', 'sintesis'];
 const TAB_LABELS = {
@@ -221,14 +222,7 @@ export default function Introduccion() {
                     En nuestro cuerpo, el cerebro y los 5 sentidos forman un macrosistema de alerta y supervivencia.
                   </p>
 
-                  <div className="anim-interconnection" style={{ margin: '0 auto', transform: 'scale(1.15)', transformOrigin: 'center' }}>
-                    <div className="node node-1" style={{ background: '#a855f7' }}>Cerebro</div>
-                    <div className="node node-2" style={{ background: '#3b82f6' }}>Vista 👁️</div>
-                    <div className="node node-3" style={{ background: '#22c55e' }}>Oído 👂</div>
-                    <div className="connection line-1"></div>
-                    <div className="connection line-2"></div>
-                    <div className="connection line-3"></div>
-                  </div>
+                  <SistemaSensorial2D />
                 </div>
               </div>
             </div>
@@ -489,7 +483,7 @@ export default function Introduccion() {
               Interactúa con estas tres dimensiones sistémicas aplicadas a la percepción y la neurofisiología:
             </p>
 
-            <SystemicAnimations />
+            <SystemicAnimations2D />
 
             <hr className="separator" />
 
@@ -696,107 +690,6 @@ function LineamientosRoadmap() {
           y cerrarás evaluando la <strong>conservación</strong>, el <strong>propósito</strong> y la <strong>homeostasis</strong> en la
           integración sensorial completa.
         </p>
-      </div>
-    </div>
-  );
-}
-
-// Subcomponente de Animaciones Interactivas del Enfoque Sistémico
-function SystemicAnimations() {
-  const [activeConcept, setActiveConcept] = useState(0);
-
-  const concepts = [
-    {
-      title: 'Totalidad e Interconexión',
-      desc: 'Un sistema es más que la suma de sus partes. Si aíslas un receptor del cerebro, pierde su función perceptiva.',
-      icon: '🧩',
-    },
-    {
-      title: 'Causalidad y Retroalimentación',
-      desc: 'Las señales viajan en cadena: estímulo → receptor → tálamo → corteza, y el cerebro retroalimenta la atención.',
-      icon: '🔄',
-    },
-    {
-      title: 'Propósito y Homeostasis Sensorial',
-      desc: 'El sistema ajusta su sensibilidad continuamente (adaptación a la luz, habituación a olores) para mantener el balance.',
-      icon: '🎯',
-    },
-  ];
-
-  return (
-    <div className="systemic-animations glass-panel" style={{ position: 'relative', overflow: 'hidden', borderRadius: '15px' }}>
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          zIndex: 0,
-          opacity: 0.4,
-          pointerEvents: 'none',
-        }}
-      >
-        <Aurora colorStops={['#1e293b', '#7c3aed', '#0f172a']} blend={0.5} amplitude={1.2} speed={0.8} />
-      </div>
-
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <div className="concept-tabs">
-          {concepts.map((c, i) => (
-            <button
-              key={i}
-              className={`concept-btn ${activeConcept === i ? 'active' : ''}`}
-              onClick={() => setActiveConcept(i)}
-            >
-              <span className="concept-icon">{c.icon}</span>
-              <span className="concept-title">{c.title}</span>
-            </button>
-          ))}
-        </div>
-
-        <div className="concept-content">
-          <div style={{ marginBottom: '1rem', minHeight: '32px' }}>
-            <BlurText
-              key={activeConcept}
-              text={concepts[activeConcept].title}
-              className="text-neon-purple"
-              style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#c084fc' }}
-              delay={40}
-            />
-          </div>
-          <p className="concept-desc">{concepts[activeConcept].desc}</p>
-
-          <div className="concept-visual">
-            {activeConcept === 0 && (
-              <div className="anim-interconnection">
-                <div className="node node-1" style={{ background: '#a855f7' }}>Cerebro</div>
-                <div className="node node-2" style={{ background: '#3b82f6' }}>Ojo 👁️</div>
-                <div className="node node-3" style={{ background: '#f97316' }}>Piel 🖐️</div>
-                <div className="connection line-1"></div>
-                <div className="connection line-2"></div>
-                <div className="connection line-3"></div>
-              </div>
-            )}
-            {activeConcept === 1 && (
-              <div className="anim-causality">
-                <div className="gear gear-1">⚙️</div>
-                <div className="gear gear-2">⚙️</div>
-                <div className="gear gear-3">⚙️</div>
-              </div>
-            )}
-            {activeConcept === 2 && (
-              <div className="anim-homeostasis">
-                <div className="scale">
-                  <div className="scale-base"></div>
-                  <div className="scale-arm">
-                    <div className="weight weight-l" style={{ background: '#3b82f6' }}>Estímulo</div>
-                    <div className="weight weight-r" style={{ background: '#a855f7' }}>Adaptación</div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
       </div>
     </div>
   );
