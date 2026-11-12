@@ -1,0 +1,719 @@
+/* Estilos del Laboratorio de Introducción */
+
+.intro-lab-container {
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.intro-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.intro-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #9ca3af;
+  font-size: 1.1rem;
+}
+
+.tab-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.tab-navigation button {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #9ca3af;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.tab-navigation button.active {
+  background: rgba(0, 204, 255, 0.1);
+  border-color: #00ccff;
+  color: #00ccff;
+  box-shadow: 0 0 15px rgba(0, 204, 255, 0.2);
+}
+
+.tab-content {
+  padding: 40px;
+  min-height: 500px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.section-desc {
+  color: #d1d5db;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  font-size: 1.05rem;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.input-group {
+  margin-bottom: 25px;
+}
+
+.glass-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: none;
+  transition: all 0.3s ease;
+}
+
+.glass-textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #00ccff;
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.1);
+}
+
+.glass-textarea:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.action-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-save {
+  padding: 14px 32px;
+  border-radius: 30px;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #005588, #00aadd);
+  color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-save:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(0, 170, 221, 0.4);
+}
+
+.btn-save:disabled {
+  background: #374151;
+  color: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.status-msg {
+  text-align: center;
+  margin-top: 20px;
+  color: #10b981;
+  font-weight: 500;
+}
+
+.animate-fade {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Intro Simulations Stack */
+.sim-stack-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.sim-item.full-width {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 30px;
+}
+
+.sim-item h4 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #7dd3fc;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.sim-caption {
+  font-size: 0.95rem;
+  color: #d1d5db;
+  margin-top: 25px;
+  line-height: 1.6;
+}
+
+.sim-visual {
+  width: 100%;
+  min-height: 350px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* 1. Solar System Full */
+.solar-visual {
+  background: radial-gradient(circle at bottom, #1b2735 0%, #090a0f 100%);
+  position: relative;
+}
+
+.stars {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: transparent;
+  box-shadow:
+    100px 60px 2px 1px rgba(255, 255, 255, 1), 420px 100px 2px 1px rgba(255, 255, 255, 0.95),
+    650px 200px 2px 1px rgba(255, 255, 255, 1), 250px 280px 2px 1px rgba(255, 255, 255, 0.9),
+    750px 320px 2px 1px rgba(255, 255, 255, 1), 30px 180px 2px 1px rgba(255, 255, 255, 0.95),
+    500px 40px 2px 1px rgba(255, 255, 255, 1), 380px 350px 2px 1px rgba(255, 255, 255, 0.9),
+    10px 10px 1px rgba(255, 255, 255, 0.8), 50px 200px 1px rgba(255, 255, 255, 0.7),
+    300px 50px 1px rgba(255, 255, 255, 0.9), 400px 150px 1px rgba(255, 255, 255, 0.6),
+    550px 300px 1px rgba(255, 255, 255, 0.7), 80px 300px 1px rgba(255, 255, 255, 0.6),
+    200px 180px 1px rgba(255, 255, 255, 0.8), 700px 120px 1px rgba(255, 255, 255, 0.9),
+    150px 50px 1px rgba(255, 255, 255, 0.5), 600px 10px 1px rgba(255, 255, 255, 0.6),
+    450px 250px 1px rgba(255, 255, 255, 0.7), 250px 80px 1px rgba(255, 255, 255, 0.4),
+    800px 220px 1px rgba(255, 255, 255, 0.8), 50px 350px 1px rgba(255, 255, 255, 0.7),
+    350px 320px 1px rgba(255, 255, 255, 0.6), 180px 10px 1px rgba(255, 255, 255, 0.7),
+    650px 280px 1px rgba(255, 255, 255, 0.5), 720px 40px 1px rgba(255, 255, 255, 0.9),
+    120px 130px 1px rgba(255, 255, 255, 0.8), 280px 200px 1px rgba(255, 255, 255, 0.5),
+    45px 90px 0px rgba(255, 255, 255, 0.3), 160px 260px 0px rgba(255, 255, 255, 0.25),
+    530px 160px 0px rgba(255, 255, 255, 0.3), 680px 60px 0px rgba(255, 255, 255, 0.2),
+    370px 190px 0px rgba(255, 255, 255, 0.25), 770px 270px 0px rgba(255, 255, 255, 0.3),
+    90px 340px 0px rgba(255, 255, 255, 0.2), 440px 310px 0px rgba(255, 255, 255, 0.25);
+  animation: twinkle 4s infinite alternate;
+  opacity: 0.9;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.shooting-star {
+  position: absolute;
+  top: 0; left: 0;
+  width: 150px; height: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,1), rgba(255,255,255,0));
+  transform: rotate(-45deg);
+  animation: shooting 6s linear infinite;
+  opacity: 0;
+  z-index: 5;
+}
+
+@keyframes shooting {
+  0% { transform: translateX(600px) translateY(-50px) rotate(-45deg); opacity: 1; }
+  10% { transform: translateX(0px) translateY(550px) rotate(-45deg); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.solar-system-full {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.sun-glow {
+  position: absolute; top: 50%; left: 50%;
+  width: 40px; height: 40px;
+  background: radial-gradient(circle, #fffbeb 10%, #fde047 40%, #ea580c 80%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 40px 10px rgba(250, 204, 21, 0.4);
+  z-index: 10;
+}
+
+.orbit {
+  position: absolute; top: 50%; left: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.planet {
+  border-radius: 50%;
+  position: absolute; top: 50%; left: 100%;
+  transform: translate(-50%, -50%);
+  box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.orbit-mercury { width: 70px; height: 70px; animation: spin 3s linear infinite; }
+.planet-mercury { width: 6px; height: 6px; background: #a3a3a3; }
+.orbit-venus { width: 110px; height: 110px; animation: spin 5s linear infinite; }
+.planet-venus { width: 10px; height: 10px; background: #fcd34d; }
+.orbit-earth { width: 160px; height: 160px; animation: spin 8s linear infinite; }
+.planet-earth { width: 12px; height: 12px; background: #3b82f6; }
+.orbit-moon { width: 24px; height: 24px; border: none; animation: spin-moon 2s linear infinite; left: 100%; top: 50%; margin-top: -12px; margin-left: -12px; }
+.moon { width: 4px; height: 4px; background: #e5e7eb; border-radius: 50%; position: absolute; top: 50%; left: 100%; transform: translate(-50%, -50%); }
+
+@keyframes spin-moon {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.orbit-mars { width: 220px; height: 220px; animation: spin 12s linear infinite; }
+.planet-mars { width: 9px; height: 9px; background: #ef4444; }
+.orbit-jupiter { width: 320px; height: 320px; animation: spin 25s linear infinite; }
+.planet-jupiter { width: 24px; height: 24px; background: #fdba74; }
+.orbit-saturn { width: 420px; height: 420px; animation: spin 45s linear infinite; }
+.planet-saturn { width: 20px; height: 20px; background: #fde047; }
+.saturn-rings { width: 34px; height: 8px; border-radius: 50%; border: 3px solid rgba(253, 224, 71, 0.5); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(20deg); }
+.orbit-uranus { width: 500px; height: 500px; animation: spin 70s linear infinite; }
+.planet-uranus { width: 16px; height: 16px; background: #67e8f9; }
+.orbit-neptune { width: 580px; height: 580px; animation: spin 100s linear infinite; }
+.planet-neptune { width: 15px; height: 15px; background: #2563eb; }
+
+/* 2. Electric System Full (Isometric) */
+.electric-visual {
+  position: relative;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+.house-circuit-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+.circuit-svg {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 15;
+}
+
+.wire-main {
+  fill: none; stroke: #22d3ee; stroke-width: 0.8; stroke-linecap: round; stroke-linejoin: round;
+  filter: drop-shadow(0 0 3px #22d3ee) drop-shadow(0 0 6px rgba(34, 211, 238, 0.5));
+  animation: svg-glow 3s ease-in-out infinite alternate;
+}
+
+.wire-branch {
+  fill: none; stroke: #22d3ee; stroke-width: 0.6; stroke-linecap: round; stroke-dasharray: 2 1;
+  filter: drop-shadow(0 0 2px #22d3ee);
+  animation: svg-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes svg-glow {
+  0% { filter: drop-shadow(0 0 2px #22d3ee); }
+  100% { filter: drop-shadow(0 0 4px #22d3ee) drop-shadow(0 0 8px rgba(34, 211, 238, 0.6)); }
+}
+
+.energy-dot {
+  fill: #fff;
+  filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 8px #22d3ee);
+}
+
+.circuit-source {
+  position: absolute; bottom: 8%; right: 10%;
+  font-size: 1.6rem; z-index: 25;
+  filter: drop-shadow(0 0 8px #facc15);
+  animation: pulse-light 2s infinite alternate;
+}
+
+@keyframes pulse-light {
+  0% { opacity: 0.5; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1.15); }
+}
+
+/* 3. Transport System Full (Isometric) */
+.city-visual {
+  position: relative;
+  background: #0f172a;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.isometric-bg {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.isometric-overlay {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+.car-iso {
+  position: absolute;
+  width: 20px; height: 10px;
+  border-radius: 3px 6px 6px 3px;
+  z-index: 10;
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.car-iso::before {
+  content: ''; position: absolute;
+  left: 3px; top: 2px; width: 6px; height: 6px;
+  background: rgba(147, 197, 253, 0.5);
+  border-radius: 1px 3px 3px 1px;
+}
+
+.car-iso::after {
+  content: ''; position: absolute;
+  left: -1px; top: 1px; width: 3px; height: 3px;
+  background: #fef08a; border-radius: 50%;
+  box-shadow: 0 0 6px #fef08a, 0 0 12px rgba(254, 240, 138, 0.6), 0 5px 0 #fef08a, 0 5px 6px #fef08a;
+}
+
+.car-iso-1 { background: linear-gradient(90deg, #dc2626, #ef4444, #b91c1c); transform: rotate(-33deg); animation: iso-d1 7s ease-in-out infinite 0.3s; }
+.car-iso-2 { background: linear-gradient(90deg, #2563eb, #3b82f6, #1d4ed8); transform: rotate(147deg); animation: iso-d2 9.5s ease-in-out infinite 3.8s; }
+.car-iso-3 { background: linear-gradient(90deg, #059669, #10b981, #047857); transform: rotate(-147deg); animation: iso-d3 8s ease-in-out infinite 1.5s; }
+.car-iso-4 { background: linear-gradient(90deg, #ca8a04, #facc15, #a16207); transform: rotate(33deg); animation: iso-d4 10s ease-in-out infinite 5.2s; }
+
+@keyframes iso-d1 {
+  0% { top: 78%; left: 8%; } 35% { top: 62%; left: 35%; } 48% { top: 62%; left: 35%; } 100% { top: 22%; left: 92%; }
+}
+@keyframes iso-d2 {
+  0% { top: 22%; left: 92%; } 35% { top: 38%; left: 65%; } 48% { top: 38%; left: 65%; } 100% { top: 78%; left: 8%; }
+}
+@keyframes iso-d3 {
+  0% { top: 78%; left: 92%; } 35% { top: 62%; left: 65%; } 48% { top: 62%; left: 65%; } 100% { top: 22%; left: 8%; }
+}
+@keyframes iso-d4 {
+  0% { top: 22%; left: 8%; } 35% { top: 38%; left: 35%; } 48% { top: 38%; left: 35%; } 100% { top: 78%; left: 92%; }
+}
+
+.inspiring-text {
+  text-align: center;
+  padding: 25px;
+  margin-top: 25px;
+  border-left: 4px solid #00ccff;
+}
+
+.inspiring-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+@keyframes spin {
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 30px 0;
+}
+
+@media (max-width: 768px) {
+  .intro-header .subtitle { padding: 0 25px; }
+  .tab-navigation { flex-wrap: wrap; gap: 10px; padding: 0 15px; }
+  .tab-navigation button { padding: 10px 18px; font-size: 0.9rem; justify-content: center; flex: 1 1 auto; min-width: 0; }
+  p, h3, h4, .sim-caption, .section-desc { text-align: center; }
+  .solar-system-full { transform: translate(-50%, -50%) scale(0.45); }
+}
+
+@media (min-width: 769px) {
+  .solar-system-full { transform: translate(-50%, -50%) scale(0.85); }
+  .solar-visual { min-height: 520px; }
+}
+
+/* Objetivo de aprendizaje */
+.intro-objective {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 12px 22px;
+  border-radius: 12px;
+  background: rgba(0, 204, 255, 0.06);
+  border: 1px solid rgba(0, 204, 255, 0.3);
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+/* Botón Continuar (navegación guiada) */
+.continue-footer {
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.continue-btn {
+  padding: 15px 36px;
+  border-radius: 50px;
+  border: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.continue-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.7);
+}
+
+.continue-arrow {
+  margin-left: 10px;
+  font-size: 1.3rem;
+}
+
+/* Video nativo del pensamiento sistémico */
+.video-panel {
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  background: #000;
+  margin-bottom: 35px;
+}
+
+.video-panel video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #000;
+}
+
+/* Figuras alusivas (conglomerado vs sistema) */
+.figuras-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+.figura-card {
+  margin: 0;
+  padding: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.figura-card img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.figura-card figcaption {
+  margin-top: 12px;
+  color: #d1d5db;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.figura-card figcaption strong {
+  color: #00ccff;
+}
+
+/* Otros sistemas (ejemplos) */
+.otros-sistemas {
+  margin-top: 30px;
+  padding: 22px 28px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.otros-sistemas p {
+  margin: 0;
+  color: #d1d5db;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+/* Tarjetas de los 7 lineamientos */
+.lineamientos-container {
+  margin-top: 10px;
+}
+
+.lineamientos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 25px;
+}
+
+.lineamiento-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lineamiento-card:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.lineamiento-card.active {
+  border-color: #00ccff;
+  background: rgba(0, 204, 255, 0.08);
+  box-shadow: 0 0 15px rgba(0, 204, 255, 0.15);
+}
+
+.lineamiento-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lineamiento-num {
+  min-width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.lineamiento-icon {
+  font-size: 1.4rem;
+}
+
+.lineamiento-name {
+  font-weight: 700;
+  color: #e2e8f0;
+  line-height: 1.3;
+}
+
+.lineamiento-body {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  animation: fadeIn 0.4s ease-out;
+}
+
+.lineamiento-body p {
+  margin: 0 0 10px 0;
+  color: #d1d5db;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.lineamiento-lab {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  color: #c4b5fd;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* Mapa del recorrido (roadmap) */
+.roadmap-map {
+  margin-top: 10px;
+  padding: 22px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.roadmap-chain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.roadmap-node {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 204, 255, 0.1);
+  border: 2px solid #00ccff;
+  color: #00ccff;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  box-shadow: 0 0 12px rgba(0, 204, 255, 0.3);
+}
+
+.roadmap-arrow {
+  color: #667eea;
+  font-size: 1.3rem;
+  font-weight: 700;
+  animation: pulseLine 1.5s ease-in-out infinite;
+}
+
+.roadmap-caption {
+  margin: 0;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.roadmap-caption strong {
+  color: #00ccff;
+}
+
+@media (max-width: 768px) {
+  .intro-objective { padding: 10px 16px; font-size: 0.92rem; }
+  .lineamiento-head { justify-content: center; }
+  .lineamiento-body p { text-align: center; }
+}

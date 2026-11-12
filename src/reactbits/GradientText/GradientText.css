@@ -1,0 +1,41 @@
+.gradient-text-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.gradient-text-inner {
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift linear infinite;
+}
+
+.gradient-text-wrapper.with-border {
+  padding: 0.35em 0.65em;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.gradient-text-wrapper.with-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: inherit;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  background-image: inherit;
+  background-size: 300% 100%;
+  animation: gradientShift linear infinite;
+  animation-duration: inherit;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

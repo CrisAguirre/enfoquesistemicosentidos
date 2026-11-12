@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f87171" />
+      <stop offset="45%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#991b1b" />
+    </linearGradient>
+  </defs>
+  <path
+    d="M32 57
+       C14 45 6 34 6 24.5
+       C6 16.5 12 10 20 10
+       C25 10 29 13 32 18
+       C35 13 39 10 44 10
+       C52 10 58 16.5 58 24.5
+       C58 34 50 45 32 57
+       Z"
+    fill="url(#heartGrad)"
+  />
+  <path
+    d="M14 24.5 C14 18 18 14 24 14 C27 14 29.5 15.5 31 18 C29 13 25 10.5 20 10.5 C13.5 10.5 8.5 15.5 8.5 22.5 C8.5 28 12 33 17 38"
+    fill="#fca5a5"
+    opacity="0.55"
+  />
+  <path
+    d="M20 44 C26 40 30 36 32 32 C34 36 38 40 44 44"
+    fill="none"
+    stroke="#fca5a5"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    opacity="0.7"
+  />
+</svg>

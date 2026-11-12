@@ -1,0 +1,28 @@
+.model3d-canvas {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  cursor: grab;
+}
+
+.model3d-canvas:active {
+  cursor: grabbing;
+}
+
+.model3d-loading {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 520px;
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .model3d-loading {
+    height: 320px;
+  }
+}
