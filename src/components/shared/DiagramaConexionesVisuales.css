@@ -1,0 +1,537 @@
+/* ===== DIAGRAMA ESQUEMÁTICO DE CONEXIONES VISUALES (FULL WIDTH) ===== */
+.diagrama-conexiones-visuales {
+  width: 100%;
+  margin: 2.5rem 0;
+  border-radius: var(--radius-xl, 16px);
+  background: radial-gradient(circle at 50% 0%, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(56, 189, 248, 0.08);
+  padding: 1.8rem;
+  box-sizing: border-box;
+  color: #f8fafc;
+  position: relative;
+  overflow: visible;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.diagrama-conexiones-visuales:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(56, 189, 248, 0.15);
+}
+
+/* ── Encabezado ── */
+.dcv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dcv-header-left {
+  flex: 1 1 500px;
+}
+
+.dcv-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.dcv-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0 0 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.dcv-subtitle {
+  font-size: 0.92rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Barra de controles y filtros ── */
+.dcv-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.dcv-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.dcv-filter-btn {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #cbd5e1;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dcv-filter-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #f8fafc;
+}
+
+.dcv-filter-btn.active {
+  background: rgba(56, 189, 248, 0.22);
+  border-color: #38bdf8;
+  color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+}
+
+.dcv-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.dcv-action-btn {
+  padding: 0.5rem 1.1rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+}
+
+.dcv-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+  border-color: #38bdf8;
+}
+
+.dcv-action-btn.active-sim {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+}
+
+/* ── Contenedor del Lienzo SVG (Ancho Completo y sin recortes) ── */
+.dcv-canvas-wrap {
+  width: 100%;
+  position: relative;
+  background: radial-gradient(ellipse at 50% 50%, rgba(15, 23, 42, 0.7) 0%, rgba(2, 6, 23, 0.95) 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.5rem;
+  box-sizing: border-box;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.dcv-svg {
+  display: block;
+  width: 100%;
+  min-width: 820px;
+  height: auto;
+  max-height: 520px;
+  user-select: none;
+}
+
+/* Estilos de nodos interactivos en SVG */
+.dcv-node {
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dcv-node:focus {
+  outline: none;
+}
+
+.dcv-node:hover,
+.dcv-node.selected {
+  filter: drop-shadow(0 0 12px var(--node-color, #38bdf8));
+}
+
+.dcv-node circle.pin-dot {
+  transition: all 0.2s ease;
+}
+
+.dcv-node:hover circle.pin-dot,
+.dcv-node.selected circle.pin-dot {
+  r: 18;
+}
+
+.dcv-pulse-ring {
+  animation: dcvPulse 2.4s infinite ease-out;
+  transform-origin: center;
+}
+
+@keyframes dcvPulse {
+  0% {
+    r: 14;
+    opacity: 0.8;
+  }
+  70% {
+    r: 32;
+    opacity: 0;
+  }
+  100% {
+    r: 32;
+    opacity: 0;
+  }
+}
+
+/* ── Panel Inspector Detallado de Alta Legibilidad ── */
+.dcv-inspector {
+  width: 100%;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid color-mix(in srgb, var(--inspector-color, #38bdf8) 45%, transparent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 24px color-mix(in srgb, var(--inspector-color, #38bdf8) 15%, transparent);
+  padding: 1.5rem;
+  box-sizing: border-box;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.dcv-inspector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dcv-inspector-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.dcv-inspector-badge {
+  padding: 0.35rem 0.85rem;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #0f172a;
+  background: var(--inspector-color, #38bdf8);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--inspector-color, #38bdf8) 40%, transparent);
+}
+
+.dcv-inspector-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.dcv-inspector-category {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.7rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dcv-inspector-nav {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.dcv-nav-btn {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #cbd5e1;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dcv-nav-btn:hover:not(:disabled) {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: #38bdf8;
+  color: #f8fafc;
+}
+
+.dcv-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Cuadrícula de 3 columnas del inspector */
+.dcv-inspector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.dcv-card-block {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+}
+
+.dcv-block-title {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--inspector-color, #38bdf8);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dcv-block-text {
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dcv-io-flow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+}
+
+.dcv-io-pill {
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+}
+
+.dcv-io-arrow {
+  color: var(--inspector-color, #38bdf8);
+  font-weight: 700;
+}
+
+/* Nota clínica o de retroalimentación */
+.dcv-clinical-callout {
+  background: color-mix(in srgb, var(--inspector-color, #38bdf8) 8%, rgba(15, 23, 42, 0.6));
+  border: 1px solid color-mix(in srgb, var(--inspector-color, #38bdf8) 25%, transparent);
+  border-radius: 10px;
+  padding: 0.85rem 1.1rem;
+  font-size: 0.86rem;
+  color: #e2e8f0;
+  line-height: 1.55;
+}
+
+.dcv-clinical-callout strong {
+  color: var(--inspector-color, #38bdf8);
+}
+
+/* ── Grilla de Acceso Rápido a las 12 Estaciones ── */
+.dcv-stations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.6rem;
+}
+
+.dcv-station-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  color: #94a3b8;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.dcv-station-chip:hover {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: var(--chip-color, #38bdf8);
+  color: #f1f5f9;
+  transform: translateY(-1px);
+}
+
+.dcv-station-chip.selected {
+  background: color-mix(in srgb, var(--chip-color, #38bdf8) 18%, rgba(15, 23, 42, 0.9));
+  border-color: var(--chip-color, #38bdf8);
+  color: #ffffff;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--chip-color, #38bdf8) 35%, transparent);
+}
+
+.dcv-chip-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--chip-color, #38bdf8);
+  color: #0f172a;
+  font-size: 0.72rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.dcv-chip-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== TEMA CLARO (LIGHT THEME) ===== */
+[data-theme="light"] .diagrama-conexiones-visuales {
+  background: radial-gradient(circle at 50% 0%, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.95) 100%);
+  border-color: rgba(2, 132, 199, 0.25);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  color: #0f172a;
+}
+
+[data-theme="light"] .dcv-title {
+  color: #0f172a;
+}
+
+[data-theme="light"] .dcv-subtitle {
+  color: #475569;
+}
+
+[data-theme="light"] .dcv-canvas-wrap {
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.9) 0%, rgba(241, 245, 249, 0.95) 100%);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .dcv-filter-btn {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #334155;
+}
+
+[data-theme="light"] .dcv-filter-btn.active {
+  background: rgba(2, 132, 199, 0.12);
+  border-color: #0284c7;
+  color: #0369a1;
+}
+
+[data-theme="light"] .dcv-inspector {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: color-mix(in srgb, var(--inspector-color, #0284c7) 40%, rgba(0, 0, 0, 0.1));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .dcv-inspector-title {
+  color: #0f172a;
+}
+
+[data-theme="light"] .dcv-card-block {
+  background: rgba(248, 250, 252, 0.9);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .dcv-block-text {
+  color: #334155;
+}
+
+[data-theme="light"] .dcv-io-pill {
+  background: rgba(241, 245, 249, 0.9);
+  color: #1e293b;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .dcv-clinical-callout {
+  background: rgba(2, 132, 199, 0.08);
+  color: #1e293b;
+}
+
+[data-theme="light"] .dcv-station-chip {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #475569;
+}
+
+[data-theme="light"] .dcv-station-chip.selected {
+  background: color-mix(in srgb, var(--chip-color, #0284c7) 12%, #ffffff);
+  color: #0f172a;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .diagrama-conexiones-visuales {
+    padding: 1.2rem;
+  }
+
+  .dcv-title {
+    font-size: 1.25rem;
+  }
+
+  .dcv-inspector-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .dcv-stations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dcv-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dcv-actions {
+    justify-content: stretch;
+  }
+
+  .dcv-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

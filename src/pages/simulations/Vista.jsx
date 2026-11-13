@@ -2,7 +2,7 @@ import { lazy, Suspense, useState, useMemo } from 'react';
 import EvidenciaTextarea from '../../components/shared/EvidenciaTextarea';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, Legend } from 'recharts';
 import SimulationWrapper from '../../components/shared/SimulationWrapper';
-import OrganDiagram from '../../components/shared/OrganDiagram';
+import DiagramaConexionesVisuales from '../../components/shared/DiagramaConexionesVisuales';
 import Carousel from '../../components/shared/Carousel';
 import SketchfabViewer from '../../components/shared/SketchfabViewer';
 import '../pages.css';
@@ -84,15 +84,6 @@ export default function Vista() {
     }
     return data;
   }, []);
-
-  const VISTA_LABELS = [
-    { id: 'cornea', name: 'Córnea', description: 'Capa frontal transparente que refracta los rayos luminosos.', role: 'Enfoque óptico primario del sistema.', top: '50%', left: '16%', color: '#38bdf8' },
-    { id: 'pupila', name: 'Iris y Pupila', description: 'Diafragma muscular que modula la entrada de luz (apertura pupilar).', role: 'Homeostasis lumínica (L7): miosis y midriasis.', top: '50%', left: '26%', color: '#60a5fa' },
-    { id: 'cristalino', name: 'Cristalino', description: 'Lente biconvexo elástico que ajusta el enfoque fino según la distancia.', role: 'Acomodación visual mediante músculos ciliares.', top: '50%', left: '34%', color: '#818cf8' },
-    { id: 'retina', name: 'Retina', description: 'Tejido nervioso posterior cubierto de millones de fotorreceptores.', role: 'Transductor biológico: convierte fotones en señales bioeléctricas.', top: '35%', left: '72%', color: '#f43f5e' },
-    { id: 'fovea', name: 'Fóvea', description: 'Punto central de la retina con densidad máxima de conos.', role: 'Zona de agudeza visual máxima y detalle fino en color.', top: '52%', left: '80%', color: '#fbbf24' },
-    { id: 'nervio-optico', name: 'Nervio Óptico', description: 'Haz de más de un millón de axones ganglionares.', role: 'Cable aferente de transmisión hacia el lóbulo occipital cerebral.', top: '65%', left: '88%', color: '#34d399' },
-  ];
 
   const Actividad = (
     <div>
@@ -390,11 +381,8 @@ export default function Vista() {
           </div>
         </div>
 
-        {/* Diagrama anatómico interactivo */}
-        <div style={{ marginTop: '2.5rem' }}>
-          <h3 style={{ color: '#38bdf8', marginBottom: '1rem' }}>Diagrama Esquemático de Conexiones Visuales</h3>
-          <OrganDiagram labels={VISTA_LABELS} />
-        </div>
+        {/* Diagrama Esquemático Interactivo de Conexiones Visuales (Pantalla Completa & Alta Legibilidad) */}
+        <DiagramaConexionesVisuales />
 
         {/* Gráficas comparativas */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem', marginTop: '2.5rem' }}>
